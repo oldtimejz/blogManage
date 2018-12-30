@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/fonts/glyphicons-halflings-regular.woff">
+    <link rel="stylesheet" href="/fonts/glyphicons-halflings-regular.woff2">
+    <link rel="stylesheet" href="/fonts/glyphicons-halflings-regular.ttf">
+    <title><%= title%></title>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">YIDBlog</a>
+            </div>
+            <a class="navbar-brand" href="/">首页</a>
+            <ul class="nav navbar-nav navbar-right">
+                <% if(user){ %>
+                <li><a title="发表文章" href="/posts/post">发表文章</a></li>
+                <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span>登出</a></li>
+                <%}else{%>
+                <li><a href="/users/reg"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li><a href="users/test"><span class="glyphicon glyphicon-log-in"></span> 测试</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div>
+        <% if(success) { %>
+        <%= success%>
+        <% } else { %>
+        <%= error %>
+        <% } %>
+        <h3><%= title %></h3>
+        <div class="userArea">
+            <% if(user) {%>
+            <span>用户：<%= user.username %></span>
+            <% } else { %>
+            <span>用户：游客</span>
+            <% } %>
+        </div>
+    </div>
+    <hr />
+    <div class="col-sm-12">
